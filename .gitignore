@@ -1,0 +1,14 @@
+#code environment
+*.code-workspace
+.vscode/
+
+
+#venv
+/denv/
+venv/
+
+
+
+#Python
+*.py[cod] 
+*$py.class 
