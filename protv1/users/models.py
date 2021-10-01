@@ -15,12 +15,18 @@ class Certificate(models.Model):
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 class TimeSlot(models.Model):
     '''Model representing a Timeslot'''
     startTime = models.DateTimeField(blank=False, null=True)
     endTime = models.DateTimeField(blank=False, null= True)
 
     #certificate = ForeignKey(Certificate, on_delete=models.PROTECT,)
+
+    def __str__(self):
+        return f'{self.startTime} to {self.endTime}'
 
 class Application(models.Model):
     '''Model representing a request for a certificate'''
@@ -38,5 +44,8 @@ class Application(models.Model):
 
     certificate = ForeignKey(Certificate, on_delete=models.PROTECT, blank=False)
     slot = ForeignKey(TimeSlot ,on_delete=models.PROTECT, blank=False)
+
+    def __str__(self):
+        return f'By:{self.user}, For:{self.certificate}, On:{self.slot}, {self.status}, {self.collected}'
 
 
