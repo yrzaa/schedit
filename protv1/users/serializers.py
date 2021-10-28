@@ -3,6 +3,7 @@ from rest_framework import serializers
 from users import models
 
 class ApplicationsSerializer(serializers.ModelSerializer):
+    '''Serializer for applications'''
     class Meta:
         model = models.Application
         fields = ('certificate', 'slot', 'status', 'collected', 'delayed',)
@@ -29,6 +30,18 @@ class CustomUserSerializer(serializers.ModelSerializer):
             password = validated_data['password']
         )
         return user
+
+    def update(self, instance, validated_data):
+        '''Add new request by user'''
+        
+        appl = models.Application.objects.create(user=instance, **validated_data)
+        appl.save()
+
+        return instance
+        
+
+
+
 
 
 
