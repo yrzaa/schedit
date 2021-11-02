@@ -8,6 +8,14 @@ class ApplicationsSerializer(serializers.ModelSerializer):
         model = models.Application
         fields = ('certificate', 'slot', 'status', 'collected', 'delayed',)
 
+class ApplicationsSerializer2(serializers.ModelSerializer):
+    '''Serializes requests'''
+    #user_mail = serializers.EmailField(source = 'user.email')
+    class Meta:
+        model=models.Application
+        fields = ('user', 'status', 'collected', 'delayed', 'certificate', 'slot')
+
+
 class CustomUserSerializer(serializers.ModelSerializer):
     '''serializes a CustomUser profile object'''
     application_set = ApplicationsSerializer(many=True, read_only=True)

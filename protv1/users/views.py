@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
@@ -43,3 +44,10 @@ class CustomUserLoginApiView(ObtainAuthToken):
             'user_id': user.pk,
             'email': user.email
         })
+
+class ApplicationsViewSet(viewsets.ModelViewSet):
+    '''Handle creating and updating requests'''
+    serializer_class = serializers.ApplicationsSerializer2
+    queryset =  models.Application.objects.all()
+    authentication_classes = ()
+    permission_classes = ()
