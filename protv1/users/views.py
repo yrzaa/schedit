@@ -49,5 +49,6 @@ class ApplicationsViewSet(viewsets.ModelViewSet):
     '''Handle creating and updating requests'''
     serializer_class = serializers.ApplicationsSerializer2
     queryset =  models.Application.objects.all()
+    filterset_fields = ['status']
     authentication_classes = ()
     permission_classes = ()

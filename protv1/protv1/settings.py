@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #drf
     'rest_framework',
     'rest_framework.authtoken',
+    #filters
+    'django_filters',
+    #apps
     'users',
+
 ]
 
 #Change default user
@@ -129,4 +134,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Rest framework dicionary
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS':
+        ['django_filters.rest_framework.DjangoFilterBackend'],
+    
+}
 
