@@ -13,7 +13,9 @@ class ApplicationsSerializer2(serializers.ModelSerializer):
     #user_mail = serializers.EmailField(source = 'user.email')
     class Meta:
         model=models.Application
-        fields = ('user', 'status', 'collected', 'delayed', 'certificate', 'slot')
+        fields = ('user', 'status', 'collected', 'delayed', 'certificate', 'slot', 'id')
+
+    
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -30,22 +32,22 @@ class CustomUserSerializer(serializers.ModelSerializer):
             }
         }
     
-    def create(self, validated_data):
-        '''create and return a new user'''
-        user = models.CustomUser.objects.create_user(
-            email = validated_data['email'],
-            name = validated_data['name'],
-            password = validated_data['password']
-        )
-        return user
+    #def create(self, validated_data):
+    #    '''create and return a new user'''
+    #    user = models.CustomUser.objects.create_user(
+    #        email = validated_data['email'],
+    #        name = validated_data['name'],
+    #        password = validated_data['password']
+    #    )
+    #    return user
 
-    def update(self, instance, validated_data):
-        '''Add new request by user'''
-        
-        appl = models.Application.objects.create(user=instance, **validated_data)
-        appl.save()
-
-        return instance
+    #def update(self, instance, validated_data):
+    #    '''Add new request by user'''
+    #    
+    #    appl = models.Application.objects.create(user=instance, **validated_data)
+    #    appl.save()
+    #
+    #    return instance
         
 
 

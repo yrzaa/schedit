@@ -26,7 +26,7 @@ class CustomUserViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.CustomUserSerializer
     queryset = models.CustomUser.objects.all()
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.UpdateOwnProfile, )
+#    permission_classes = (permissions.UpdateOwnProfile, )
 
 
 class CustomUserLoginApiView(ObtainAuthToken):
