@@ -10,10 +10,10 @@ class ApplicationsSerializer(serializers.ModelSerializer):
 
 class ApplicationsSerializer2(serializers.ModelSerializer):
     '''Serializes requests'''
-    #user_mail = serializers.EmailField(source = 'user.email')
+    email = serializers.EmailField(source = 'user.email', read_only = True)
     class Meta:
         model=models.Application
-        fields = ('user', 'status', 'collected', 'delayed', 'certificate', 'slot', 'id')
+        fields = ('id', 'user', 'status', 'collected', 'delayed', 'certificate', 'slot',  'email')
 
     
 
