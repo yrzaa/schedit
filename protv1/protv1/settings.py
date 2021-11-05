@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qt-#%m=f_hgz$9_(*@uni==^0s^-pd@^jbw$+wjhsy5qb=qmlx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ '404e-101-0-42-200.ngrok.io' , 'localhost']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     #filters
     'django_filters',
+    #cors
+ #   'corsheaders',
     #apps
     'users',
 
@@ -53,12 +55,17 @@ AUTH_USER_MODEL = 'users.CustomUser'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+#    'corsheaders.middleware.CorsMiddleware',
+    'protv1.middleware.MyMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#Change before production
+#CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'protv1.urls'
 
