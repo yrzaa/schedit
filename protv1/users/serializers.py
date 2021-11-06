@@ -11,8 +11,8 @@ class ApplicationsSerializer(serializers.ModelSerializer):
 class ApplicationsSerializer2(serializers.ModelSerializer):
     '''Serializes requests'''
     email = serializers.EmailField(source = 'user.email', read_only = True)
-    startTime = serializers.DateTimeField(source = 'TimeSlot.startTime', read_only= True)
-    endTime = serializers.DateTimeField(source = 'TimeSlot.endTime', read_only= True)
+    startTime = serializers.DateTimeField(source = 'slot.startTime', read_only= True)
+    endTime = serializers.DateTimeField(source = 'slot.endTime', read_only= True)
     class Meta:
         model=models.Application
         fields = ('id', 'user', 'status', 'collected', 'delayed', 'certificate', 'slot', 'startTime', 'endTime',  'email')
